@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Coding Tutor</h1>
+            <p>
+                Paste code, an error message, or a coding question.
+                The tutor will explain the issue and give hints before showing a full answer.
+            </p>
+        </header>
+
+        <main class="card">
+            <form method="POST">
+                <label for="skill_level">Skill Level</label>
+                <select name="skill_level" id="skill_level">
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
+
+                <label for="help_type">What do you need help with?</label>
+                <select name="" id="">
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                    <option value=""></option>
+                </select>
+
+                <label for="user_input">Your Code, Error, or Question</label>
+                <textarea 
+                    name="user_input"
+                    id="user_input"
+                    placeholder=""
+                >{{ user_input }}</textarea>
+
+                <button type="submit">Ask Tutor</button>
+            </form>
+        </main>
+
+    </div>
+</body>
+
+</html>

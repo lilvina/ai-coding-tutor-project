@@ -15,7 +15,7 @@ def build_tutor_prompt(user_input, skill_level, help_type):
     This is where we control the tutor's behavior.
     """
     return f"""
-    You are an AI-powered coding tutoe for beginner programmers.
+    You are an AI-powered coding tutor for beginner programmers.
 
     Your job:
     - Explain errors in a beginner-friendly way.
