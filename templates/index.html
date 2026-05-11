@@ -19,30 +19,48 @@
             <form method="POST">
                 <label for="skill_level">Skill Level</label>
                 <select name="skill_level" id="skill_level">
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
+                    <option value="Beginner" {% if skill_level == "Beginner" %}selected{% endif %}>Beginner</option>
+                    <option value="Intermediate" {% if skill_level == "Intermediate" %}selected{% endif %}>Intermediate</option>
+                    <option value="Advanced" {% if skill_level == "Advanced" %}selected{% endif %}>Advanced</option>
                 </select>
 
                 <label for="help_type">What do you need help with?</label>
-                <select name="" id="">
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
+                <select name="help_type" id="help_type">
+                    <option value="Debug my code" {% if help_type == "Debug my code" %}selected{% endif %}>Debug my code</option>
+                    <option value="Explain an error" {% help_type == "Explain an error" %}selected{% endif %}>Explain an error</option>
+                    <option value="Explain a concept" {% if help_type == "Explain a concept" %}selected{% endif %}>Explain a concept</option>
+                    <option value="Give me hints" {% if help_type == "Give me hints" %}selected{% endif %}>Give me hints</option>
+                    <option value="Ask for full solution" {% if help_type == "Ask for full solution" %}selected{% endif %}>Ask for full solution</option>
                 </select>
 
                 <label for="user_input">Your Code, Error, or Question</label>
                 <textarea 
                     name="user_input"
                     id="user_input"
-                    placeholder=""
+                    placeholder="Example: for i in range(5)&#10; print(i)"
                 >{{ user_input }}</textarea>
 
                 <button type="submit">Ask Tutor</button>
             </form>
         </main>
+
+        {% if tutor_response %}
+        <section class="response-card">
+            <h2>Tutor Response</h2>
+            <pre>{{ tutor_response }}</pre>
+        </section>
+        {% endif %}
+
+        <section class="examples">
+            <h2>Example Questions</h2>
+            <ul>
+                <li>Why am I getting a SyntaxError?</li>
+                <li>What does ModuleNotFoundError mean?</li>
+                <li>How do environment variables work?</li>
+                <li>Why did GitHub block my push because of a secret?</li>
+                <li>Explain for loops like I'm new to Python.</li>
+            </ul>
+        </section>
 
     </div>
 </body>
