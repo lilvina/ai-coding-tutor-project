@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>AI Coding Tutor</h1>
+            <h1>AI DebugMentor</h1>
             <p>
                 Paste code, an error message, or a coding question.
                 The tutor will explain the issue and give hints before showing a full answer.
@@ -27,7 +27,7 @@
                 <label for="help_type">What do you need help with?</label>
                 <select name="help_type" id="help_type">
                     <option value="Debug my code" {% if help_type == "Debug my code" %}selected{% endif %}>Debug my code</option>
-                    <option value="Explain an error" {% help_type == "Explain an error" %}selected{% endif %}>Explain an error</option>
+                    <option value="Explain an error" {% if help_type == "Explain an error" %}selected{% endif %}>Explain an error</option>
                     <option value="Explain a concept" {% if help_type == "Explain a concept" %}selected{% endif %}>Explain a concept</option>
                     <option value="Give me hints" {% if help_type == "Give me hints" %}selected{% endif %}>Give me hints</option>
                     <option value="Ask for full solution" {% if help_type == "Ask for full solution" %}selected{% endif %}>Ask for full solution</option>
