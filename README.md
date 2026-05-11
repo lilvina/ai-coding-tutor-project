@@ -5,7 +5,6 @@ AI DebugMentor is an AI-Powered coding tutor built using Python, Flask and the O
 The goal of this project is to create a beginner-friendly learning experience that encourages problem-solving, debugging skills and independent learning.
 
 # Features
-
 ## Beginner-Friendly Explanations
 The tutor explains coding concepts and errors in simple, easy-to-understand language.
 
@@ -34,7 +33,6 @@ User can choose:
 The AI adjusts explanations based on the selected experience level.
 
 # Technologies Used
-
 ## Backend
 - Python
 - Flask
@@ -87,7 +85,6 @@ ai-debugmentor/
 - Why did Github block my push because of a secret?
 
 # Installation
-
 ## 1. Clone the Repository
 ```bash
 git clone https://www.github.com/lilvina/ai-debugmentor.git
