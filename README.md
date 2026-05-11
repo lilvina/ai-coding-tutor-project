@@ -53,6 +53,7 @@ The AI adjusts explanations based on the selected experience level.
 
 ## Project Structure
 
+```
 ai-debugmentor/
 │
 ├── app.py
@@ -66,6 +67,7 @@ ai-debugmentor/
 │
 └── static/
     └── style.css
+```
 
 ## How It Works
 1. The user enters:
