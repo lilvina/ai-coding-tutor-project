@@ -169,5 +169,5 @@ Planned features include:
 - Educational UX design
 
 ## Author
-Davina Taylor
-Github: www.github.com/lilvina
+- Davina Taylor
+- Github: www.github.com/lilvina
