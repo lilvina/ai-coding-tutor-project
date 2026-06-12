@@ -4,52 +4,80 @@ AI DebugMentor is an AI-Powered coding tutor built using Python, Flask and the O
 
 The goal of this project is to create a beginner-friendly learning experience that encourages problem-solving, debugging skills and independent learning.
 
-# Features
-## Beginner-Friendly Explanations
-The tutor explains coding concepts and errors in simple, easy-to-understand language.
+---
 
-## Progressive Hint System
-Instead of immediately revealing answers, the tutor provides:
-- Hint 1
-- Hint 2
-- Next steps
-- Full solution only if requested
+## Features
 
-## Debugging Coach
-The application can help explain:
-- Syntax errors
-- Import errors
-- API errors
-- Environment variable issues
-- Git/Github mistakes
-- Virtual environment setup problems
+### 1. Collapsible Hint System
 
-## Skill-Level Adaptation
-User can choose:
-- Beginner
-- Intermediate
-- Advanced
+AI DebugMentor uses progressive hints to support learning:
 
-The AI adjusts explanations based on the selected experience level.
+- Hint 1 gives a small clue.
+- Hint 2 gives more specific guidance.
+- Full Solution stays hidden until the learner chooses to open it.
 
-# Technologies Used
-## Backend
+
+This helps learners practice debugging instead of copying answers immediately.
+
+### 2. AI-Generated Practice Exercises
+
+The tutor can generate short practice exercises based on the learner's question.
+
+### 3. Explain It Simpler Mode
+Learners can select **Explain it simpler** when they need a concept broken down in a more beginner-friendly way.
+
+### 4. Instructor Mode
+
+Instructor Mode creates teaching support such as:
+
+- learning objectives
+- discussion questions
+- classroom teaching moves
+- concept reinforcement ideas
+
+### 5. Debugging Coach
+
+AI DebugMentor can help explain common beginner issues such as:
+
+- `SyntaxError`
+- `IndentationError`
+- `NameError`
+- `ModuleNotFoundError`
+- API authentication errors
+- `.env` setup problems
+- Git/GiHub mistakes
+- Github push protection
+
+The app also includes simple error-type detection to label the likely issue before showing the AI response.
+
+---
+
+## Technologies Used
+
+### Backend
+
 - Python
 - Flask
 
-## AI Integration
+### AI Integration
+
 - OpenAI API
 - Prompt Engineering
 
-## Frontend
+### Frontend
+
 - HTML
 - CSS
 - Jinja Templates
 
-## Tools
+### Tools
+
 - Git
 - Github
 - python-dotenv
+- Virtual environments
+
+---
 
 ## Project Structure
 
@@ -74,100 +102,187 @@ ai-debugmentor/
 - code
 - an error message
 - or a coding question
-2. Flask sends the request to the OpenAI API.
-3. The AI tutor generates:
-- an explanation
-- hints
-- and recommended next steps
-4. The response is displayed back to the learner in the web application.
+2. User selects a skill level and tutor mode.
+3. Flask sends the request to the OpenAI API.
+4. The prompt instructs AI DebugMentor to respond as a beginner-friendly tutor.
+5. The Flask/Jinja frontend displays the response in sections, including collapsible hints.
 
-## Example Questions
-- Why am I getting a SyntaxError?
-- What does ModuleNotFoundError mean?
-- Why did Github block my push because of a secret?
+---
 
-# Installation
-## 1. Clone the Repository
+## Tutor Modes
+
+AI DebugMentor includes multiple tutor modes:
+
+- **Debug my code**
+- **Explain an error**
+- **Explain a concept**
+- **Give me hints**
+- **Explain it simpler**
+- **Generate practice exercise**
+- **Instructor mode**
+- **Ask for full solution**
+
+---
+
+## Installation
+
+### 1. Clone the Repository
 ```bash
 git clone https://www.github.com/lilvina/ai-debugmentor.git
 ```
 
-## 2. Navigate Into the Project Folder
+### 2. Navigate Into the Project Folder
+
 ```bash
 cd ai-debugmentor
 ```
 
-## 3. Create a Virtual Environment
+### 3. Create a Virtual Environment
+
 Mac/Linux:
+
 ```bash
 python3 -m venv venv
 ```
+
 Windows:
+
 ```bash
 python -m venv venv
 ```
 
-## 4. Activate the Virtual Environment
-Mac/Linux
+### 4. Activate the Virtual Environment
+
+Mac/Linux:
+
 ```bash
 source venv/bin/activate
 ```
+
 Windows:
 ```bash
 venv\Scripts\activate
 ```
 
-## 5. Install Dependencies
+### 5. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
+---
+
 ## Environment Variables
-Create a .env file in the root directly:
-```
+
+Create a `.env` file in the root directly:
+
+```text
 OPENAI_API_KEY=your_api_key_here
 ```
 
+Keep your real API key private. The `.env` file should never be committed to GitHub.
+
+---
+
 ## Security Note
-The .env file is included in .gitignore to prevent API keys from being exposed publicly.
+
+This project includes a `.gitignore` file that excludes:
+
+```text
+.env
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+```
+
+This helps prevent API keys and local environment files from being exposed.
+
+---
 
 ## Run the Application
+
 ```bash
 python3 app.py
 ```
+
 Then open:
 ```
 http://127.0.0.1:5000
 ```
 
-## Educational Design Goals
-This project focuses on:
+---
+
+### Example Prompts
+
+```text
+Why am I getting a SyntaxError?
+```
+
+```text
+Explain Python loops like I'm new to programming.
+```
+
+```text
+Why is my OPENAI_API_KEY not working?
+```
+
+```text
+Generate a beginner practice exercise about functions.
+```
+
+```text
+Create instructor notes for teaching Flask routes.
+```
+
+---
+
+### Educational Design Goals
+
+AI DebugMentor focuses on:
+
 - guided learning
 - debugging confidence
 - scaffolding
-- and reducing beginner frustration
+- reducing beginner frustration
+- active problem-solving
+- technical communication
+- instructor support
 
-The AI tutor encourages active participation and critical thinking.
+The app helps learners understand what went wrong and what to try next instead of simply generating answers.
+
+---
 
 ## Future Improvements
-Planned features include:
+
+Possible future additions:
+
 - Code execution sandbox
-- Learning progress tracking
-- AI-generated coding exercises
+- Saved conversation
+- Student progress tracking
 - Quiz system
 - Multi-language support
 - Voice tutoring
-- Personalized learning pathways
+- Deployment on Render or Railway
+
+---
 
 ## Key Skills Demonstrated
+
+This project demostrates:
+
 - Flask development
 - OpenAI API integration
 - Prompt engineering
 - AI-assisted education
 - Backend development
-- Technical communication
-- Educational UX design
+- Technical curriculum thinking
+- Debugging instruction
+- Secure API key handling
+
+---
 
 ## Author
+
 - Davina Taylor
 - Github: www.github.com/lilvina
