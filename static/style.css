@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-    max-width: 950px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 40px 20px;
 }
@@ -20,14 +20,27 @@ header {
     margin-bottom: 30px;
 }
 
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 13px;
+    font-weight: bold;
+    color: #2563eb;
+    margin-bottom: 8px;
+}
+
 h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
+    font-size: 46px;
+    margin: 0 0 10px;
+}
+
+h2 {
+    margin-top: 0;
 }
 
 p {
-    font-size: 18px;
-    line-height: 1.5;
+    font-size: 17px;
+    line-height: 1.6;
 }
 
 .card,
@@ -38,6 +51,12 @@ p {
     padding: 25px;
     margin-bottom: 25px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
 }
 
 label {
@@ -57,7 +76,7 @@ textarea {
 }
 
 textarea {
-    min-height: 220px;
+    min-height: 240px;
     font-family: monospace;
 }
 
@@ -76,16 +95,93 @@ button:hover {
     background: #1d4ed8;
 }
 
-pre {
-    white-space: pre-wrap;
-    line-height: 1.6;
-    font-size: 16px;
+.response-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.badge {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1e40af;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.warning {
+    background: #fef3c7;
+    border: 1px solid #f59e0b;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+.section-block,
+details {
     background: #f8fafc;
-    padding: 18px;
-    border-radius: 12px;
     border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 18px;
+    margin-bottom: 16px;
+}
+
+.section-block h3 {
+    margin-top: 0;
+}
+
+details summary {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+details p {
+    margin-bottom: 0;
+}
+
+.accent {
+    background: #eef2ff;
+    border-color: #c7d2fe;
+}
+
+.instructor {
+    background: #ecfdf5;
+    border-color: #bbf7d0;
+}
+
+.example-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.example-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 14px;
+    border-radius: 10px;
+    line-height: 1.5;
 }
 
 ul {
     line-height: 1.8;
+}
+
+@media (max-width: 750px) {
+    .form-row,
+    .example-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .response-header {
+        flex-direction: column;
+    }
 }

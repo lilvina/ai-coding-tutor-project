@@ -2,36 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>AI DebugMentor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
     <div class="container">
         <header>
+            <p class="eyebrow">Python · Flask · OpenAI API</p>
             <h1>AI DebugMentor</h1>
             <p>
-                Paste code, an error message, or a coding question.
-                The tutor will explain the issue and give hints before showing a full answer.
+                A beginner-friendly coding tutor that explains errors, gives progressive hints,
+                creates practice exercises, and supports instructors without immediately giving away answers.
             </p>
         </header>
 
         <main class="card">
             <form method="POST">
-                <label for="skill_level">Skill Level</label>
-                <select name="skill_level" id="skill_level">
-                    <option value="Beginner" {% if skill_level == "Beginner" %}selected{% endif %}>Beginner</option>
-                    <option value="Intermediate" {% if skill_level == "Intermediate" %}selected{% endif %}>Intermediate</option>
-                    <option value="Advanced" {% if skill_level == "Advanced" %}selected{% endif %}>Advanced</option>
-                </select>
+                <div class="form-row">
+                    <div>
+                        <label for="skill_level">Skill Level</label>
+                        <select name="skill_level" id="skill_level">
+                            <option value="Beginner" {% if skill_level == "Beginner" %}selected{% endif %}>Beginner</option>
+                            <option value="Intermediate" {% if skill_level == "Intermediate" %}selected{% endif %}>Intermediate</option>
+                            <option value="Advanced" {% if skill_level == "Advanced" %}selected{% endif %}>Advanced</option>
+                        </select>
+                    </div>
 
-                <label for="help_type">What do you need help with?</label>
-                <select name="help_type" id="help_type">
-                    <option value="Debug my code" {% if help_type == "Debug my code" %}selected{% endif %}>Debug my code</option>
-                    <option value="Explain an error" {% if help_type == "Explain an error" %}selected{% endif %}>Explain an error</option>
-                    <option value="Explain a concept" {% if help_type == "Explain a concept" %}selected{% endif %}>Explain a concept</option>
-                    <option value="Give me hints" {% if help_type == "Give me hints" %}selected{% endif %}>Give me hints</option>
-                    <option value="Ask for full solution" {% if help_type == "Ask for full solution" %}selected{% endif %}>Ask for full solution</option>
-                </select>
+                    <div>
+                        <label for="help_type">Tutor Mode</label>
+                        <select name="help_type" id="help_type">
+                            <option value="Debug my code" {% if help_type == "Debug my code" %}selected{% endif %}>Debug my code</option>
+                            <option value="Explain an error" {% if help_type == "Explain an error" %}selected{% endif %}>Explain an error</option>
+                            <option value="Explain a concept" {% if help_type == "Explain a concept" %}selected{% endif %}>Explain a concept</option>
+                            <option value="Give me hints" {% if help_type == "Give me hints" %}selected{% endif %}>Give me hints</option>
+                            <option value="Explain it simpler" {% if help_type == "Explain it simpler" %}selected{% endif %}>Explain it simpler</option>
+                            <option value="Generate practice exercise" {% if help_type == "Generate practice exercise" %}selected{% endif %}>Generate practice exercise</option>
+                            <option value="Instructor mode" {% if help_type == "Instructor mode" %}selected{% endif %}>Instructor mode</option>
+                            <option value="Ask for full solution" {% if help_type == "Ask for full solution" %}selected{% endif %}>Ask for full solution</option>
+                        </select>
+                    </div>
+                </div>
 
                 <label for="user_input">Your Code, Error, or Question</label>
                 <textarea 
@@ -40,29 +51,92 @@
                     placeholder="Example: for i in range(5)&#10; print(i)"
                 >{{ user_input }}</textarea>
 
-                <button type="submit">Ask Tutor</button>
+                <button type="submit">Ask AI DebugMentor</button>
             </form>
         </main>
 
         {% if tutor_response %}
         <section class="response-card">
-            <h2>Tutor Response</h2>
-            <pre>{{ tutor_response }}</pre>
+            <div class="response-header">
+                <div>
+                    <p class="eyebrow">Tutor Response</p>
+                    <h2>{{ tutor_response.title }}</h2>
+                </div>
+                {% if error_type %}
+                <span class="badge">{{ error_type }}</span>
+                {% endif %}
+            </div>
+
+            {% if parser_warning %}
+            <p class="warning">{{ parser_warning }}</p>
+            {% endif %}
+
+            <div class="section-block">
+                <h3>What I Notice</h3>
+                <p>{{ tutor_response.what_i_notice }}</p>
+            </div>
+
+            <div class="section-block">
+                <h3>Simple Explanation</h3>
+                <p>{{ tutor_response.simple_explanation }}</p>
+            </div>
+
+            <details open>
+                <summary>Show Hint 1</summary>
+                <p>{{ tutor_response.hint_1 }}</p>
+            </details>
+
+            <details>
+                <summary>Show Hint 2</summary>
+                <p>{{ tutor_response.hint_2 }}</p>
+            </details>
+
+            <details>
+                <summary>Show Full Solution</summary>
+                <p>{{ tutor_response.full_solution }}</p>
+            </details>
+
+            <div class="section-block">
+                <h3>Try This Next</h3>
+                <p>{{ tutor_response.try_this_next }}</p>
+            </div>
+
+            {% if tutor_response.learning_objectives %}
+            <div class="section-block">
+                <h3>Learning Objectives</h3>
+                <ul>
+                    {% for objective in tutor_response.learning_objectives %}
+                    <li>{{ objective }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <div class="section-block accent">
+                <h3>Practice Exercise</h3>
+                <p>{{ tutor_response.practice_exercise }}</p>
+            </div>
+
+            <div class="section-block instructor">
+                <h3>Instructor Mode Notes</h3>
+                <p>{{ tutor_response.instructor_notes }}</p>
+            </div>
+
         </section>
         {% endif %}
 
         <section class="examples">
-            <h2>Example Questions</h2>
-            <ul>
-                <li>Why am I getting a SyntaxError?</li>
-                <li>What does ModuleNotFoundError mean?</li>
-                <li>How do environment variables work?</li>
-                <li>Why did GitHub block my push because of a secret?</li>
-                <li>Explain for loops like I'm new to Python.</li>
-            </ul>
+            <h2>Try These Example Prompts</h2>
+            <div class="example-grid">
+                <div class="example-card">Why am I getting a SyntaxError?</div>
+                <div class="example-card">Explain Python loops like I am new to coding.</div>
+                <div class="example-card">Why is my OPENAI_API_KEY not working?</div>
+                <div class="example-card">Generate a beginner practice exercise about functions.</div>
+                <div class="example-card">Create instructor notes for teaching Flask routes.</div>
+                <div class="example-card">Why did GitHub block my push because of a secret?</div>
+            </div>
         </section>
 
     </div>
 </body>
-
 </html>
