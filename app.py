@@ -8,6 +8,15 @@ load_dotenv()
 
 app = Flask(__name__)
 
+key = os.getenv("OPENAI_API_KEY")
+
+print("KEY TYPE:", type(key))
+print("KEY LENGTH:", len(key) if key else 0)
+print("API KEY EXISTS:", bool(key))
+
+print("KEY LENGTH:", len(key) if key else 0)
+print("RAILWAY_ENVIRONMENT_NAME:", os.getenv("RAILWAY_ENVIRONMENT_NAME"))
+
 print("API KEY EXISTS:", bool(os.getenv("OPENAI_API_KEY")))
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
